@@ -5,8 +5,8 @@ import spot.account
 import server_time
 
 pub struct Binance {
-	server_base_endpoint string
-	symbol               string
+	server_base_endpoint string [required]
+	symbol               string [required]
 	secret_key           string
 	api_key              string
 }

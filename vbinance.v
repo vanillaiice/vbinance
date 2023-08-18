@@ -41,3 +41,21 @@ pub fn (b Binance) account_info_pretty() !string {
 pub fn (b Binance) server_time() !i64 {
 	return server_time.get(b.server_base_endpoint)!
 }
+
+/*
+pub fn (b Binance) set_server_base_endpoint(server_base_endpoint string) {
+	b.server_base_endpoint = server_base_endpoint
+}
+
+pub fn (b Binance) set_symbol(symbol string) {
+	b.symbol = symbol
+}
+
+pub fn (b Binance) set_secret_key(secret_key string) {
+	b.secret_key = secret_key
+}
+
+pub fn (b Binance) set_api_key(api_key string) {
+	b.api_key = api_key
+}
+*/

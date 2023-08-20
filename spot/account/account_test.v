@@ -8,7 +8,7 @@ fn test_info() {
 	skey := os.getenv('SECRET_KEY')
 	apikey := os.getenv('API_KEY')
 
-	rj, r, sc := info('testnet.binance.vision', skey, apikey)!
+	rj, r, sc := info('testnet.binance.vision', skey, apikey)
 
 	assert sc == 200
 	assert rj.balances[7].asset == 'XRP'
@@ -24,7 +24,7 @@ fn test_info_pretty() {
 	skey := os.getenv('SECRET_KEY')
 	apikey := os.getenv('API_KEY')
 
-	r := info_pretty('testnet.binance.vision', skey, apikey)!
+	r := info_pretty('testnet.binance.vision', skey, apikey)
 
 	println(r)
 }

@@ -22,24 +22,24 @@ pub fn new(server_base_endpoint string, symbol string, secret_key string, api_ke
 
 pub fn (b Binance) market_buy(quantity string) !(string, string, int) {
 	return order.market_buy(b.server_base_endpoint, b.secret_key, b.api_key, b.symbol,
-		quantity)!
+		quantity)
 }
 
 pub fn (b Binance) market_sell(quantity string) !(string, string, int) {
 	return order.market_sell(b.server_base_endpoint, b.secret_key, b.api_key, b.symbol,
-		quantity)!
+		quantity)
 }
 
-pub fn (b Binance) account_info() !(account.Response, string, int) {
-	return account.info(b.server_base_endpoint, b.secret_key, b.api_key)!
+pub fn (b Binance) account_info() (account.Response, string, int) {
+	return account.info(b.server_base_endpoint, b.secret_key, b.api_key)
 }
 
-pub fn (b Binance) account_info_pretty() !string {
-	return account.info_pretty(b.server_base_endpoint, b.secret_key, b.api_key)!
+pub fn (b Binance) account_info_pretty() string {
+	return account.info_pretty(b.server_base_endpoint, b.secret_key, b.api_key)
 }
 
 pub fn (b Binance) server_time() !i64 {
-	return server_time.get(b.server_base_endpoint)!
+	return server_time.get(b.server_base_endpoint)
 }
 
 /*

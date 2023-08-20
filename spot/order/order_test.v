@@ -8,7 +8,7 @@ fn test_market_sell() {
 	skey := os.getenv('SECRET_KEY')
 	apikey := os.getenv('API_KEY')
 
-	s, r, sc := market_sell('testnet.binance.vision', skey, apikey, 'TRXUSDT', '500')!
+	s, r, sc := market_sell('testnet.binance.vision', skey, apikey, 'TRXUSDT', '500')
 
 	assert s == 'FILLED'
 	assert sc == 200
@@ -23,7 +23,7 @@ fn test_market_buy() {
 	skey := os.getenv('SECRET_KEY')
 	apikey := os.getenv('API_KEY')
 
-	s, r, sc := market_buy('testnet.binance.vision', skey, apikey, 'TRXUSDT', '500')!
+	s, r, sc := market_buy('testnet.binance.vision', skey, apikey, 'TRXUSDT', '500')
 
 	assert s == 'FILLED'
 	assert sc == 200
@@ -33,5 +33,5 @@ fn test_market_buy() {
 }
 
 fn test_make_market_order_request() {
-	assert make_market_order_request('1', 'SELL', 'BTCUSDT', '69420') == 'side=SELL&symbol=BTCUSDT&quantity=1&timestamp=69420&type=MARKET'
+	assert make_market_order_request('1', 'SELL', 'BTCUSDT', i64(69420)) == 'side=SELL&symbol=BTCUSDT&quantity=1&timestamp=69420&type=MARKET'
 }

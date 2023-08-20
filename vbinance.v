@@ -20,12 +20,12 @@ pub fn new(server_base_endpoint string, symbol string, secret_key string, api_ke
 	}
 }
 
-pub fn (b Binance) market_buy(quantity string) !(string, string, int) {
+pub fn (b Binance) market_buy(quantity string) (string, string, int) {
 	return order.market_buy(b.server_base_endpoint, b.secret_key, b.api_key, b.symbol,
 		quantity)
 }
 
-pub fn (b Binance) market_sell(quantity string) !(string, string, int) {
+pub fn (b Binance) market_sell(quantity string) (string, string, int) {
 	return order.market_sell(b.server_base_endpoint, b.secret_key, b.api_key, b.symbol,
 		quantity)
 }

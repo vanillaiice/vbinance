@@ -11,7 +11,7 @@ V module to connect with Binance API.
 
 ## Installation
 
-You can install this module using v.
+You can install this module using v:
 
 ```
 v install vanillaiice.vbinance
@@ -23,7 +23,7 @@ You can then import it in your project by doing:
 import vanillaiice.vbinance
 ```
 
-Also, you can add in your v.mod file:
+Also, you can add the following in your v.mod file:
 
 ```
 dependencies: ['vanillaiice.vbinance']
@@ -35,7 +35,7 @@ dependencies: ['vanillaiice.vbinance']
 
 ## Test
 
-To run tests, make sure you have zzktm.vdotenv installed, and .env file containting your Binance secret key and api key **for testnet**.
+To run tests, make sure you have zzktm.vdotenv installed, and an .env file containing your Binance secret key and api key **for testnet**.
 
 ```
 v test .

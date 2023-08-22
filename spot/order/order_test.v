@@ -12,10 +12,10 @@ fn test_market_sell() {
 
 	assert s == 'FILLED'
 	assert sc == 200
-	
+
 	println('status: ${s}')
 	println('status code: ${sc}')
-	//println('resp: ${rb}')
+	// println('resp: ${rb}')
 }
 
 fn test_market_buy() {
@@ -27,9 +27,9 @@ fn test_market_buy() {
 
 	assert s == 'FILLED'
 	assert sc == 200
-	
+
 	println('status: ${s}')
-	//println('resp: ${rb}')
+	// println('resp: ${rb}')
 }
 
 fn test_make_market_order_request() {

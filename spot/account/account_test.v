@@ -15,7 +15,7 @@ fn test_info() {
 	assert rj.balances[7].free == '50000.00000000'
 
 	println(rj)
-	//println(r)
+	// println(r)
 	println(sc)
 }
 

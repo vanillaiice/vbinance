@@ -6,6 +6,7 @@ import sign
 import server_time as st
 
 struct Response {
+pub:
 	balances []struct {
 		asset string
 		free  string

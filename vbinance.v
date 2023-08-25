@@ -2,6 +2,7 @@ module vbinance
 
 import spot.order
 import spot.account
+import market.exchange_information as exinfo
 import server_time
 
 pub struct Binance {
@@ -36,6 +37,14 @@ pub fn (b Binance) account_info() (account.Response, string, int) {
 
 pub fn (b Binance) account_info_pretty() string {
 	return account.info_pretty(b.server_base_endpoint, b.secret_key, b.api_key)
+}
+
+pub fn (b Binance) exchange_info(symbols []string) (exinfo.Response, string, int) {
+	return exinfo.get(b.server_base_endpoint, symbols)
+}
+
+pub fn (b Binance) step_size(symbols []string) (map[string]string, string) {
+	return exinfo.step_size(b.server_base_endpoint, symbols)
 }
 
 pub fn (b Binance) server_time() !i64 {

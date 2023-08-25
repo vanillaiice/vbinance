@@ -4,6 +4,7 @@ import spot.order
 import spot.account
 import market.exchange_information as exinfo
 import server_time
+import helpers
 
 pub struct Binance {
 	server_base_endpoint string [required]

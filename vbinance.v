@@ -51,6 +51,9 @@ pub fn (b Binance) server_time() !i64 {
 	return server_time.get(b.server_base_endpoint)
 }
 
+pub fn round_step_size(quantity f64, step_size f64) f64 {
+	return helpers.round_step_size(quantity, step_size)
+} 
 /*
 pub fn (b Binance) set_server_base_endpoint(server_base_endpoint string) {
 	b.server_base_endpoint = server_base_endpoint

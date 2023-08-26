@@ -8,27 +8,25 @@ import helpers
 
 pub struct Binance {
 	server_base_endpoint string [required]
-	symbol               string [required]
 	secret_key           string
 	api_key              string
 }
 
-pub fn new(server_base_endpoint string, symbol string, secret_key string, api_key string) &Binance {
+pub fn new(server_base_endpoint string, secret_key string, api_key string) &Binance {
 	return &Binance{
 		server_base_endpoint: server_base_endpoint
-		symbol: symbol
 		secret_key: secret_key
 		api_key: api_key
 	}
 }
 
-pub fn (b Binance) market_buy(quantity string) !(string, string, int) {
-	return order.market_buy(b.server_base_endpoint, b.secret_key, b.api_key, b.symbol,
+pub fn (b Binance) market_buy(quantity string, symbol string) !(string, string, int) {
+	return order.market_buy(b.server_base_endpoint, b.secret_key, b.api_key, symbol,
 		quantity) or { return err }
 }
 
-pub fn (b Binance) market_sell(quantity string) !(string, string, int) {
-	return order.market_sell(b.server_base_endpoint, b.secret_key, b.api_key, b.symbol,
+pub fn (b Binance) market_sell(quantity string, symbol string) !(string, string, int) {
+	return order.market_sell(b.server_base_endpoint, b.secret_key, b.api_key, symbol,
 		quantity) or { return err }
 }
 

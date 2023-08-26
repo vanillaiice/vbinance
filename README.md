@@ -7,6 +7,7 @@ V module to connect with Binance API.
 - sign requests with HMAC-SHA-256
 - get server time
 - get account info
+- get exchange information
 - buy and sell spot market orders
 
 ## Installation

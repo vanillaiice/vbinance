@@ -2,20 +2,17 @@ module order
 
 import os
 import zztkm.vdotenv
+import helpers
 
 fn test_market_sell() {
 	vdotenv.load('.env')
 	skey := os.getenv('SECRET_KEY')
 	apikey := os.getenv('API_KEY')
 
-	s, r, sc := market_sell('testnet.binance.vision', skey, apikey, 'TRXUSDT', '500')
+	s, r, sc := market_sell('testnet.binance.vision', skey, apikey, 'TRXUSDT', '${helpers.round_step_size(1002.44970703125, 0.1):.5f}')
 
 	assert s == 'FILLED'
 	assert sc == 200
-
-	println('status: ${s}')
-	println('status code: ${sc}')
-	// println('resp: ${rb}')
 }
 
 fn test_market_buy() {
@@ -23,13 +20,10 @@ fn test_market_buy() {
 	skey := os.getenv('SECRET_KEY')
 	apikey := os.getenv('API_KEY')
 
-	s, r, sc := market_buy('testnet.binance.vision', skey, apikey, 'TRXUSDT', '500')
+	s, r, sc := market_buy('testnet.binance.vision', skey, apikey, 'TRXUSDT', '${helpers.round_step_size(1002.44970703125, 0.1):.5f}')
 
 	assert s == 'FILLED'
 	assert sc == 200
-
-	println('status: ${s}')
-	// println('resp: ${rb}')
 }
 
 fn test_make_market_order_request() {

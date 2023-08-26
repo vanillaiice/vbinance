@@ -22,53 +22,36 @@ pub fn new(server_base_endpoint string, symbol string, secret_key string, api_ke
 	}
 }
 
-pub fn (b Binance) market_buy(quantity string) (string, string, int) {
+pub fn (b Binance) market_buy(quantity string) !(string, string, int) {
 	return order.market_buy(b.server_base_endpoint, b.secret_key, b.api_key, b.symbol,
-		quantity)
+		quantity) or { return err }
 }
 
-pub fn (b Binance) market_sell(quantity string) (string, string, int) {
+pub fn (b Binance) market_sell(quantity string) !(string, string, int) {
 	return order.market_sell(b.server_base_endpoint, b.secret_key, b.api_key, b.symbol,
-		quantity)
+		quantity) or { return err }
 }
 
-pub fn (b Binance) account_info() (account.Response, string, int) {
-	return account.info(b.server_base_endpoint, b.secret_key, b.api_key)
+pub fn (b Binance) account_info() !(account.Response, string, int) {
+	return account.info(b.server_base_endpoint, b.secret_key, b.api_key) or { return err }
 }
 
-pub fn (b Binance) account_info_pretty() string {
-	return account.info_pretty(b.server_base_endpoint, b.secret_key, b.api_key)
+pub fn (b Binance) account_info_pretty() !string {
+	return account.info_pretty(b.server_base_endpoint, b.secret_key, b.api_key) or { return err }
 }
 
-pub fn (b Binance) exchange_info(symbols []string) (exinfo.Response, string, int) {
-	return exinfo.get(b.server_base_endpoint, symbols)
+pub fn (b Binance) exchange_info(symbols []string) !(exinfo.Response, string, int) {
+	return exinfo.get(b.server_base_endpoint, symbols) or { return err }
 }
 
-pub fn (b Binance) step_size(symbols []string) (map[string]string, string) {
-	return exinfo.step_size(b.server_base_endpoint, symbols)
+pub fn (b Binance) step_size(symbols []string) !(map[string]string, string) {
+	return exinfo.step_size(b.server_base_endpoint, symbols) or { return err }
 }
 
 pub fn (b Binance) server_time() !i64 {
-	return server_time.get(b.server_base_endpoint)
+	return server_time.get(b.server_base_endpoint) or { return err }
 }
 
 pub fn round_step_size(quantity f64, step_size f64) f64 {
 	return helpers.round_step_size(quantity, step_size)
-} 
-/*
-pub fn (b Binance) set_server_base_endpoint(server_base_endpoint string) {
-	b.server_base_endpoint = server_base_endpoint
 }
-
-pub fn (b Binance) set_symbol(symbol string) {
-	b.symbol = symbol
-}
-
-pub fn (b Binance) set_secret_key(secret_key string) {
-	b.secret_key = secret_key
-}
-
-pub fn (b Binance) set_api_key(api_key string) {
-	b.api_key = api_key
-}
-*/

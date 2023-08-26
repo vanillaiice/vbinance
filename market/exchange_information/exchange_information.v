@@ -71,7 +71,7 @@ struct Filters {
 	max_num_algo_orders      int    [json: maxNumAlgoOrders]
 }
 
-pub fn get(server_base_endpoint string, symbols []string) (Response, string, int) {
+pub fn get(server_base_endpoint string, symbols []string) !(Response, string, int) {
 	mut data := ''
 
 	if symbols.len == 1 {
@@ -81,16 +81,14 @@ pub fn get(server_base_endpoint string, symbols []string) (Response, string, int
 		data = '?symbols=${s}'
 	}
 
-	resp := http.get('https://${server_base_endpoint}/api/v3/exchangeInfo${data}') or {
-		return Response{}, '${err}', 0
-	}
-	resp_json := json.decode(Response, resp.body) or { return Response{}, '${err}', 0 }
+	resp := http.get('https://${server_base_endpoint}/api/v3/exchangeInfo${data}') or { return err }
+	resp_json := json.decode(Response, resp.body) or { return err }
 
-	return resp_json, resp.str(), resp.status_code
+	return resp_json, resp.body.str(), resp.status_code
 }
 
-pub fn step_size(server_base_endpoint string, symbols []string) (map[string]string, string) {
-	info, resp, _ := get(server_base_endpoint, symbols)
+pub fn step_size(server_base_endpoint string, symbols []string) !(map[string]string, string) {
+	info, resp, _ := get(server_base_endpoint, symbols) or { return err }
 	mut step_sizes := map[string]string{}
 
 	for s in info.symbols {

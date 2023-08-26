@@ -9,7 +9,8 @@ fn test_market_sell() {
 	skey := os.getenv('SECRET_KEY')
 	apikey := os.getenv('API_KEY')
 
-	s, r, sc := market_sell('testnet.binance.vision', skey, apikey, 'TRXUSDT', '${helpers.round_step_size(1002.44970703125, 0.1):.5f}')
+	s, r, sc := market_sell('testnet.binance.vision', skey, apikey, 'TRXUSDT', '${helpers.round_step_size(1002.44970703125,
+		0.1):.5f}')!
 
 	assert s == 'FILLED'
 	assert sc == 200
@@ -20,7 +21,8 @@ fn test_market_buy() {
 	skey := os.getenv('SECRET_KEY')
 	apikey := os.getenv('API_KEY')
 
-	s, r, sc := market_buy('testnet.binance.vision', skey, apikey, 'TRXUSDT', '${helpers.round_step_size(1002.44970703125, 0.1):.5f}')
+	s, r, sc := market_buy('testnet.binance.vision', skey, apikey, 'TRXUSDT', '${helpers.round_step_size(1002.44970703125,
+		0.1):.5f}')!
 
 	assert s == 'FILLED'
 	assert sc == 200

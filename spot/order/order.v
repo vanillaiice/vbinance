@@ -22,6 +22,7 @@ pub:
 	side                 string
 	working_time         i64             [json: working_time]
 	fills                []struct {
+	pub:
 		price                      string
 		qty                        string
 		commission                 string

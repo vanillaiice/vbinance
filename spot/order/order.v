@@ -6,6 +6,7 @@ import sign
 import server_time as st
 
 struct Response {
+pub:
 	symbol               string
 	order_id             int             [json: orderId]
 	order_list_id        int             [json: orderListId]

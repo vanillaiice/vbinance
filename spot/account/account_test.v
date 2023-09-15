@@ -11,12 +11,8 @@ fn test_info() {
 	rj, r, sc := info('testnet.binance.vision', skey, apikey)!
 
 	assert sc == 200
-	assert rj.balances[7].asset == 'XRP'
-	assert rj.balances[7].free == '50000.00000000'
-
-	println(rj)
-	println(r)
-	println(sc)
+	assert rj.balances[0].asset == 'BNB'
+	assert rj.balances[0].free == '2.00000000'
 }
 
 fn test_info_pretty() {
@@ -26,5 +22,5 @@ fn test_info_pretty() {
 
 	r := info_pretty('testnet.binance.vision', skey, apikey)!
 
-	println(r)
+	assert r != ''
 }

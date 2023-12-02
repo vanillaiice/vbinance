@@ -8,27 +8,27 @@ import server_time as st
 struct Response {
 pub:
 	symbol               string
-	order_id             int             [json: orderId]
-	order_list_id        int             [json: orderListId]
-	client_order_id      string          [json: clientOrderId]
-	transact_time        i64             [json: transactTime]
+	order_id             int             @[json: orderId]
+	order_list_id        int             @[json: orderListId]
+	client_order_id      string          @[json: clientOrderId]
+	transact_time        i64             @[json: transactTime]
 	price                string
-	orig_qty             string          [json: origQty]
-	executed_qty         string          [json: executedQty]
-	cumulative_quote_qty string          [json: cumulativeQuoteQty]
+	orig_qty             string          @[json: origQty]
+	executed_qty         string          @[json: executedQty]
+	cumulative_quote_qty string          @[json: cumulativeQuoteQty]
 	status               string
-	time_in_force        string          [json: timeInForce]
+	time_in_force        string          @[json: timeInForce]
 	@type                string
 	side                 string
-	working_time         i64             [json: working_time]
+	working_time         i64             @[json: working_time]
 	fills                []struct {
 	pub:
 		price                      string
 		qty                        string
 		commission                 string
-		commission_asset           string [json: commissionAsset]
-		trade_id                   int    [json: tradeId]
-		self_trade_prevention_mode string [json: selfTradePreventionMode]
+		commission_asset           string @[json: commissionAsset]
+		trade_id                   int    @[json: tradeId]
+		self_trade_prevention_mode string @[json: selfTradePreventionMode]
 	}
 }
 

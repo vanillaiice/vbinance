@@ -11,8 +11,8 @@ fn test_info() {
 	rj, r, sc := info('testnet.binance.vision', skey, apikey)!
 
 	assert sc == 200
-	assert rj.balances[0].asset == 'BNB'
-	assert rj.balances[0].free == '2.00000000'
+	assert rj.balances[0].asset == 'ETH'
+	assert rj.balances[0].free == '1.00000000'
 }
 
 fn test_info_pretty() {

@@ -4,12 +4,10 @@ import os
 import zztkm.vdotenv
 import helpers
 
-const (
-	buy = 'BUY'
-	sell = 'SELL'
-	market = 'MARKET'
-	limit = "LIMIT"
-)
+const buy = 'BUY'
+const sell = 'SELL'
+const market = 'MARKET'
+const limit = 'LIMIT'
 
 fn test_place() {
 	vdotenv.load('.env')
@@ -18,10 +16,10 @@ fn test_place() {
 
 	// market buy
 	mut options := {
-		'side':      buy
-		'symbol':    'TRXUSDT'
-		'quantity':  '${helpers.round_step_size(1002.44970703125,0.1):.5f}'
-		'type':      market
+		'side':     order.buy
+		'symbol':   'TRXUSDT'
+		'quantity': '${helpers.round_step_size(1002.44970703125, 0.1):.5f}'
+		'type':     order.market
 	}
 
 	s, r, sc := place('testnet.binance.vision', skey, apikey, mut options)!
@@ -31,10 +29,10 @@ fn test_place() {
 
 	// market sell
 	mut options2 := {
-		'side':      sell
-		'symbol':    'TRXUSDT'
-		'quantity':  '${helpers.round_step_size(1002.44970703125,0.1):.5f}'
-		'type':      market
+		'side':     order.sell
+		'symbol':   'TRXUSDT'
+		'quantity': '${helpers.round_step_size(1002.44970703125, 0.1):.5f}'
+		'type':     order.market
 	}
 
 	s2, r2, sc2 := place('testnet.binance.vision', skey, apikey, mut options2)!

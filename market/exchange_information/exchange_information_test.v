@@ -14,6 +14,6 @@ fn test_get() {
 		eprintln('${err}')
 		exit(1)
 	}
-	assert s[pairs[1]] == '0.00000100'
+	assert s[pairs[1]] == '0.00001000'
 	assert s[pairs[0]] == '0.10000000'
 }

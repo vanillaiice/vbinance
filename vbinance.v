@@ -6,15 +6,13 @@ import market.exchange_information as exinfo
 import server_time
 import helpers
 
-const (
-	buy = 'BUY'
-	sell = 'SELL'
-	market = 'MARKET'
-	limit = "LIMIT"
-)
+const buy = 'BUY'
+const sell = 'SELL'
+const market = 'MARKET'
+const limit = 'LIMIT'
 
 pub struct Binance {
-	server_base_endpoint string [required]
+	server_base_endpoint string @[required]
 	secret_key           string
 	api_key              string
 }
@@ -29,46 +27,54 @@ pub fn new(server_base_endpoint string, secret_key string, api_key string) &Bina
 
 pub fn (b Binance) market_buy(quantity string, symbol string) !(order.Response, string, int) {
 	mut options := {
-		'side':      buy
-		'symbol':    symbol
-		'quantity':  quantity
-		'type':      market
+		'side':     vbinance.buy
+		'symbol':   symbol
+		'quantity': quantity
+		'type':     vbinance.market
 	}
-	return order.place(b.server_base_endpoint, b.secret_key, b.api_key, mut options) or { return err }
+	return order.place(b.server_base_endpoint, b.secret_key, b.api_key, mut options) or {
+		return err
+	}
 }
 
 pub fn (b Binance) market_sell(quantity string, symbol string) !(order.Response, string, int) {
 	mut options := {
-		'side':      sell
-		'symbol':    symbol
-		'quantity':  quantity
-		'type':      market
+		'side':     vbinance.sell
+		'symbol':   symbol
+		'quantity': quantity
+		'type':     vbinance.market
 	}
-	return order.place(b.server_base_endpoint, b.secret_key, b.api_key, mut options) or { return err }
+	return order.place(b.server_base_endpoint, b.secret_key, b.api_key, mut options) or {
+		return err
+	}
 }
 
 pub fn (b Binance) limit_buy(quantity string, symbol string, time_in_force string, price string) !(order.Response, string, int) {
 	mut options := {
-		'side':        buy
+		'side':        vbinance.buy
 		'symbol':      symbol
 		'quantity':    quantity
 		'timeInForce': time_in_force
 		'price':       price
-		'type':        limit
+		'type':        vbinance.limit
 	}
-	return order.place(b.server_base_endpoint, b.secret_key, b.api_key, mut options) or { return err }
+	return order.place(b.server_base_endpoint, b.secret_key, b.api_key, mut options) or {
+		return err
+	}
 }
 
 pub fn (b Binance) limit_sell(quantity string, symbol string, time_in_force string, price string) !(order.Response, string, int) {
 	mut options := {
-		'side':        sell
+		'side':        vbinance.sell
 		'symbol':      symbol
 		'quantity':    quantity
 		'timeInForce': time_in_force
 		'price':       price
-		'type':        limit
+		'type':        vbinance.limit
 	}
-	return order.place(b.server_base_endpoint, b.secret_key, b.api_key, mut options) or { return err }
+	return order.place(b.server_base_endpoint, b.secret_key, b.api_key, mut options) or {
+		return err
+	}
 }
 
 pub fn (b Binance) account_info() !(account.Response, string, int) {

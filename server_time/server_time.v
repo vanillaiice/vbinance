@@ -4,7 +4,7 @@ import net.http
 import json
 
 struct Response {
-	server_time i64 [json: serverTime]
+	server_time i64 @[json: serverTime]
 }
 
 pub fn get(server_base_endpoint string) !i64 {
